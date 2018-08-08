@@ -123,6 +123,96 @@ cosnt combineReducers = (reducers) => {
       }
 }
 ```
+# Connect
+ 
+ ```javascript
+ 
+ ////////////////// container component below IS REPLACED BY connect() which generates a similar container component
+ //////////////////and mapStateToProps and mapDispatchToProps
+ 
+ class VisibleTodoList extends Component {
+  
+  componentDidMount(){  
+    const { store } = this.context
+    this.unsubscribe = store.subscribe(() => {
+        this.forceUpdate()
+        })
+    
+    componentWillUnmount(){
+        this.unsubscribe()
+      }
+     
+    render(){
+      const props = this.props
+      const { store } = this.context
+      const state = store.getState()
+      
+      return(
+        <TodoList todos={
+                          getVisibleTodos(state,todos,state.visibilityFilter)
+                        } 
+                  onTodoClick={(id) => {
+                          store.dispatch({
+                            type : 'TOGGLE_TODO',
+                            id : id
+                          })    
+                        }                        
+                  } />
+      )
+    }
+    visibleTodoList.contextTypes = {
+      store : React.PropTypes.object
+    }
+}
+/////////////////////////////////////////////
+/////////////////connect() //////////////////
 
+const { connect } = ReactRedux
+
+const mapStateToProps = (dispatch) => {
+  return ({
+    onTodoClick : (id) => {
+        dispatch({
+            type: 'TOGGLE_TODO',
+            id
+        })
+    }
+  })
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return({
+      onTodoClick : (id) =>   
+        dispatch({
+            type : 'TOGGLE_TODO',
+            id
+            })
+     })
+}
+
+const VisibleTodoList = connect(
+  mapStateToProps,
+  mapDispatchToProps
+ )(TodoList)
+ 
+/////////////////////////////////////////////
+const TodoApp = () => (
+   <div>
+      <AddTodo />
+      <VisibleTodoList />
+      <Footer />
+   </div>
+  )
+  
+ const { Provider } = ReactRedux
+ const { createStore } = Redux
+ 
+ ReactDOM.render(
+  <Provider store={createStore(todoApp)}>
+      <TodoApp />
+  </Provider>,
+  document.getElementById('root')
+ )
+ ```
 
 

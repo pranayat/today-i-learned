@@ -107,15 +107,16 @@ const toDoApp = combineReducers({
 The keys `todos` and `visiblityFilter` correspond to the respective fields in the state that will be handled by the respective reducers. The result will be combined into a single state object. Conventionally you give the reducer the same name as the state field they manage.
 
 Combine Reducers implementation : 
-``` cosnt combineReducers = (reducers) => {
-      return (state = {}, action) => {
+```javascript 
+cosnt combineReducers = (reducers) => {
+      return (state = {}, action) => { //returns a reducer function
         return Object.keys(reducers).reduce(
            
            (nextState,key) => {
             nextState[key] = reducers[key](state[key],action)  //call the reducer for that key and assign it to the corresp. state field         
             return nextState
             },
-            {}) //returns new state with all the updated values from resp. reducers
+            {}) //returns single object with the state keys as keys and corresponding reducer as the value
       }
 }
 ```

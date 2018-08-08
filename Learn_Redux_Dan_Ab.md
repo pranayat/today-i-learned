@@ -104,4 +104,7 @@ const toDoApp = combineReducers({
   visibilityFilter : visibilityFilter
   })  
 ```
-The keys `todos` and `visiblityFilter` correspond to the respective fields in the state that will be handled by the respective reducers. The result will be combined into a single state object.
+The keys `todos` and `visiblityFilter` correspond to the respective fields in the state that will be handled by the respective reducers. The result will be combined into a single state object. Conventionally you give the reducer the same name as the state field they manage.
+
+
+

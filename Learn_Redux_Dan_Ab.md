@@ -96,3 +96,12 @@ returned by the 'toDoApp' reducer
     }
  }
 ```
+<strong>combineReducers</strong> does this for us. It takes in an object containing all the reducers and returns a top level reducer.
+```javascript
+const { combineReducers } = Redux;
+const toDoApp = combineReducers({
+  todos : todos,
+  visibilityFilter : visibilityFilter
+  })  
+```
+The keys `todos` and `visiblityFilter` correspond to the respective fields in the state that will be handled by the respective reducers. The result will be combined into a single state object.

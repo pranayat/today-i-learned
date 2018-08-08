@@ -36,6 +36,9 @@ const render = () => {
                         })}/>,
     document.getElementById('root')
 )
+
+store.subscribe(render) //everytime store updates. render is called
+render() // call once for initial render
 ```
 # Reducer composition
 1. Extract to smaller reducers

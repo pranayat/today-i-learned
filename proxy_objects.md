@@ -23,9 +23,9 @@ There are 3 key terms we need to define before we proceed:
   
   let p = new Proxy(o, handler);
   
-  console.log(p.o.reason)
-  console.log(p.o.code)
-  console.log(p.o.beer) // key does not exist
+  console.log(p.reason)
+  console.log(p.code)
+  console.log(p.beer) // key does not exist
   ```
   here:
   ```get``` is the trap,

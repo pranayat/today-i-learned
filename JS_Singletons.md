@@ -13,8 +13,9 @@ var mySingleton = (function(){
     return {
       getRandomNumber: function(){
                         return privateRandomNumber
-                       }
-    }
+                       },
+      nu: priveteRandomNumber
+     }
   }
   
   return {
@@ -36,5 +37,10 @@ console.log(singleB.getRandomNumber())
 
 The first time you run mySingleton.getIntance() it returns object created by init()
 Next time it returns the same object (because of the if statement)
+
+Components:
+* 1 anonymouse driver function that returns the an object containing getInstance function
+* one init function which returns a new instance containing private methods and props, called by getInstance
+* getInstance function which returns instance
   
 You will get the same random number in every instance

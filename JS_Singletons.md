@@ -2,7 +2,7 @@
 
 Get the same instance of the object every time
 
-```
+```JS
 var mySingleton = (function(){
   // scope 1
   var instance

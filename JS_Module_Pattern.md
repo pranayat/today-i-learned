@@ -1,6 +1,6 @@
 # Module Pattern
 
-Hide object properties using closrure
+Hide object properties using closure
 
 ```JS
   function createPerson(){

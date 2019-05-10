@@ -68,3 +68,4 @@ let Human = {
 let man = Object.create(Human)
 man.name = 'Kramer'
 man.speak() // prints My name is Kramer
+```

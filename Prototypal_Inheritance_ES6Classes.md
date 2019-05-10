@@ -5,10 +5,10 @@
 ### Using 'new'
 
 Whenever a function foo() {} is declared, the JS engine creates 2 objects:
-1. Object foo (since a function is also an object with a call method)
+1. Object foo (since a function is an object with a call method)
 2. Object prototype
 
-the foo object contains a property called 'prototype' which points to the prototype object
+the 'foo' object contains a property called 'prototype' which points to the prototype object
 
 ```
 foo = {

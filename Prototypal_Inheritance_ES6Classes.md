@@ -34,7 +34,7 @@ the ```new``` keyword does 2 things:
 1. inserts ```var this = {}``` before line 26 and ```return this``` after line 26
 2. the "elessar" object will contain an extra ```__proto__``` object which will point to the ```prototype``` object of Human
 
-so now you have:
+the prototype chain looks like:
 ```
   Human = {
     prototype: -------------------------> prototype = {}
@@ -68,4 +68,10 @@ let Human = {
 let man = Object.create(Human)
 man.name = 'Kramer'
 man.speak() // prints My name is Kramer
+```
+the prototype chain looks like:
+```
+man = {
+name: 'Kramer',
+__proto__: ---------------------> Human = { speak: function: { console.log('My name is: ${this.name}') }
 ```

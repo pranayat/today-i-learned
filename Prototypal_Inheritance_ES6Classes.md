@@ -30,7 +30,7 @@ let elessar = new Human('Elessar Aragorn')
 ```
 the ```new``` keyword does 2 things:
 1. inserts ```var this = {}``` before line 26 and ```return this``` after line 26
-2. the elessar object will contain an extra ```__proto__``` object which will point to the ```prototype``` object of Human
+2. the "elessar" object will contain an extra ```__proto__``` object which will point to the ```prototype``` object of Human
 
 so now you have:
 ```
@@ -47,3 +47,12 @@ so now you have:
     __proto__: --------------------------------
   }
 ```
+
+so to make child objects 'inherit' properties from 'Human' you need to put those properties on Human's 'prototype'
+so you do:
+
+``` Human.prototype.speak = function() { console.log('Hi I'm Cosmo') }```
+
+OR
+
+``` elessar.__proto__.speak = function() { console.log('Hi I'm Cosmo') }``` (this is depracated or summin)

@@ -74,4 +74,5 @@ the prototype chain looks like:
 man = {
 name: 'Kramer',
 __proto__: ---------------------> Human = { speak: function: { console.log('My name is: ${this.name}') }
+}
 ```

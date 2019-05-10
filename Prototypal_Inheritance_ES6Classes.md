@@ -2,6 +2,8 @@
 
 ## Prototypes
 
+### Using 'new'
+
 Whenever a function foo() {} is declared, the JS engine creates 2 objects:
 1. Object foo (since a function is also an object with a call method)
 2. Object prototype
@@ -56,3 +58,13 @@ so you do:
 OR
 
 ``` elessar.__proto__.speak = function() { console.log('Hi I'm Cosmo') }``` (this is depracated or summin)
+
+### Using 'Object.create(object you want as prototype)'
+
+```js
+let Human = {
+   speak: function() { console.log(`My name is: ${this.name}`) } // here 'this' refers to Human object since owner of speak             function is Human
+  }
+let man = Object.create(Human)
+man.name = 'Kramer'
+man.speak() // prints My name is Kramer

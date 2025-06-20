@@ -1,5 +1,5 @@
 - gRPC RPC calls return errors which are compatible with the Status type, defined in the package https://pkg.go.dev/google.golang.org/grpc/status.
-- Status is the error type serialized with proto buffers and sent over the wire.
+- gRPC serializes these errors to the Status type using proto buffers to send them over the wire.
   ```
   type Status struct {
 	s *spb.Status
@@ -27,21 +27,22 @@
   ```
   
   ```
-  // Server returns
+  // Server returns a status compatible error with gRPC code and message
   return status.Error(codes.NotFound, "product not found")
   ```
-
   ```
-  // Serialized as
+  // gRPC serealizes this as Status
   message Status {
   int32 code = 1;
   string message = 2;
   repeated google.protobuf.Any details = 3;
   }
+
+  // if server had returned errors.New("product not found"), code would be set to Unknown
   ```
   
   ```
-  // Client deserializes this
+  // Client deserializes this to get Status type
   st, ok: status.FromError(err)
   ```
   

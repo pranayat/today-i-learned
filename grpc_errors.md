@@ -59,10 +59,15 @@
   - LocalizedMessage
  - Eg. Creating a Status with `ErrorInfo` details
    ```
+    // create details using type ErrorInfo defined in the errordetails package
     ei := &errdetails.ErrorInfo{
 		  Metadata: metadata,
     }
-    st := status.New(codes.PermissionDenied, err.Error()) // create a new status with a gRPC code and error message
-    st, err := st.WithDetails(ei)
+    st := status.New(codes.PermissionDenied, err.Error()) // create a new Status with a gRPC code and error message
+    st, err := st.WithDetails(ei) // populate the details field
+    if err != nil {
+   	...
+     }
+    return st.Err() // server returns a Status compatible error
    ```
   

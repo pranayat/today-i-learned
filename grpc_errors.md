@@ -1,4 +1,4 @@
-- gRPC RPC calls return errors which are compatible with the Status type, defined in the package https://pkg.go.dev/google.golang.org/grpc/status.
+- gRPC calls return errors which are compatible with the Status type, defined in the package https://pkg.go.dev/google.golang.org/grpc/status.
 - gRPC serializes these errors to the Status type using proto buffers to send them over the wire.
   ```
   type Status struct {
